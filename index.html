@@ -220,7 +220,6 @@
   <hr />
 
   <section class="verified">
-    <!-- Logo: mantiene target="_blank" como tenías, pero ahora también rota y abre WA -->
     <a href="#" target="_blank">
       <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo" width="64" height="64" />
     </a>
@@ -251,7 +250,7 @@
     🎁 BONO ACTIVO - ¡Solicítalo ahora por WhatsApp!
   </div>
 
-  <!-- Script mínimo: conserva tu forma de abrir, agrega conversión y rota también el logo -->
+  <!-- Script mínimo con cambio ContactClick -> Registro -->
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   const whatsappNumbers = [
@@ -267,7 +266,6 @@ document.addEventListener('DOMContentLoaded', function () {
   // --- BOTÓN PRINCIPAL ---
   const whatsappBtn = document.getElementById("whatsapp-button");
   if (whatsappBtn) {
-    // href inicial por si alguien copia el link
     whatsappBtn.href = `https://wa.me/${whatsappNumbers[currentIndex]}?text=${encodeURIComponent(message)}`;
 
     whatsappBtn.addEventListener("click", function () {
@@ -276,11 +274,11 @@ document.addEventListener('DOMContentLoaded', function () {
       const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 
       try {
-        fbq('track', 'Lead', {content_name: 'ContactClick', phone: number});
-        fbq('trackCustom', 'ContactClick', {phone: number});
+        fbq('track', 'Lead', {content_name: 'Registro', phone: number});
+        fbq('trackCustom', 'Registro', {phone: number});
       } catch(_) {}
 
-      this.setAttribute("href", url); // el target="_blank" abre la nueva pestaña
+      this.setAttribute("href", url);
     });
   }
 
@@ -293,8 +291,8 @@ document.addEventListener('DOMContentLoaded', function () {
       const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 
       try {
-        fbq('track', 'Lead', {content_name: 'ContactClick', phone: number});
-        fbq('trackCustom', 'ContactClick', {phone: number});
+        fbq('track', 'Lead', {content_name: 'Registro', phone: number});
+        fbq('trackCustom', 'Registro', {phone: number});
       } catch(_) {}
 
       this.setAttribute("href", url);
@@ -305,7 +303,3 @@ document.addEventListener('DOMContentLoaded', function () {
 
 </body>
 </html>
-
-
-
-
